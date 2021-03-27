@@ -18,7 +18,6 @@
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
 
-
 // This is the main program of your controller.
 // It creates an instance of your Robot instance, launches its
 // function(s) and destroys it at the end of the execution.
@@ -75,11 +74,15 @@ int main(int argc, char **argv) {
   rmotor->setPosition(std::numeric_limits<double>::infinity());
   lmotor->setVelocity(0);
   rmotor->setVelocity(0);
+  lidar->enablePointCloud();
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   while (robot->step(timeStep) != -1) {
     // Read the sensors:
     // Enter here functions to read sensor data, like:
+    
+    //NEXT ATTEMPT: TRY FIND RATIO OF EACH SENSOR FIRST AND THEN USE THAT
+    
     double val[6];
     for (int i = 0; i < 6; i++) {
       val[i] = ds[i]->getValue();
@@ -95,6 +98,11 @@ int main(int argc, char **argv) {
     
     //aim is to go away from closest wall
     //if left wall is closer, put more into right wheel
+    //LIDAR SECTION
+    std::cout << lidar->getFov() << std::endl;
+    
+    
+    
     if (rval > lval) {
       //ie rval/lval > 1 
       rfin = 10;
@@ -109,7 +117,7 @@ int main(int argc, char **argv) {
       lfin = 10;
       rfin = 10;    
     }
-    std::cout << "lfin: " << lfin << "\n" << "rfin: " << rfin << std::endl;
+    //std::cout << "lfin: " << lfin << "\n" << "rfin: " << rfin << std::endl;
     //get average of right
     //set motors
     lmotor->setVelocity(lfin);

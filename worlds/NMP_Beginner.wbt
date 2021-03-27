@@ -4,7 +4,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 0.816911894310475 0.46608260607001883 0.33973807742590634 4.876958503598818
-  position -1.1184377059078425 4.095089639062794 1.1088953422250207
+  position -0.8501980900325857 2.9898439802390206 0.8022275104309208
 }
 TexturedBackground {
 }
@@ -345,7 +345,7 @@ DEF ROBOT_RED Robot {
         }
       ]
       endPoint DEF LEFT_WHEEL Solid {
-        translation -0.029999999999998958 0.025 0
+        translation -0.029999999999998916 0.025 0
         rotation 1 0 0 4.813412919008581
         children [
           DEF WHEEL Transform {
